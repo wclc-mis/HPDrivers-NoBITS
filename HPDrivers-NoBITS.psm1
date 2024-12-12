@@ -2,8 +2,6 @@ function ShowHPDriversStatus ([Parameter(Mandatory = $false)] [string]$Status) {
     <#
     .SYNOPSIS
         Displays the status of the installed driver, including its ID, name, and version.
-        Modified from - https://github.com/UsefulScripts01/HPDrivers/
-        By: David Krause
 
     .DESCRIPTION
         The ShowHPDriversStatus function creates a custom object with properties Id, Name, Version, and Status.
@@ -312,16 +310,11 @@ function Get-HPDrivers {
                     # Download a softpaq (5 attempts)
                     $Count = 1
                     $DestinationPath = "C:\Temp\HPDrivers\${Number}.exe"
+                    
                     while (!(Test-Path -Path $DestinationPath) -and ($Count -le 5)) {
                         Invoke-WebRequest -Uri "https://${Source}" -OutFile $DestinationPath -ErrorAction Ignore
                         $Count += 1
                     }
-                }
-                catch {
-                      Write-Warning "Failed to download ${Number}.exe from ${Source}. Error: $($_.Exception.Message)"
-                      }
-
-                    
 
                     # Checksum
                     $SPFileExist = Test-Path -Path "C:\Temp\HPDrivers\${Number}.exe"
