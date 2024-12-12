@@ -2,6 +2,9 @@ function ShowHPDriversStatus ([Parameter(Mandatory = $false)] [string]$Status) {
     <#
     .SYNOPSIS
         Displays the status of the installed driver, including its ID, name, and version.
+        Modified from - https://github.com/UsefulScripts01/HPDrivers 
+        Removed BITS in favour of Invoke-WebRequest
+        By: David Krause
 
     .DESCRIPTION
         The ShowHPDriversStatus function creates a custom object with properties Id, Name, Version, and Status.
